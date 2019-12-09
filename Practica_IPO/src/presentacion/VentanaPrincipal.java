@@ -210,7 +210,7 @@ public class VentanaPrincipal extends JFrame {
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		panel_1.add(tabbedPane, BorderLayout.CENTER);
 		
-		Circuitos = new Circuitos();
+		Circuitos = new CircuitosAmpliada();
 		tabbedPane.addTab("Circuitos", null, Circuitos, null);
 		
 		ListadoCircuitos = new ListadoCircuitos();
@@ -224,5 +224,13 @@ public class VentanaPrincipal extends JFrame {
 		
 		DiseñarRuta = new DiseñoRuta();
 		tabbedPane.addTab("Dise\u00F1ar Ruta", null, DiseñarRuta, null);
+	}
+
+	public JPanel getCircuitos() {
+		return Circuitos;
+	}
+
+	public void setCircuitos(JPanel circuitos) {
+		Circuitos= new Reserva();
 	}
 }

@@ -53,7 +53,7 @@ public class GuiasTuristicos extends JPanel {
 		GridBagLayout gbl_pnlLista = new GridBagLayout();
 		gbl_pnlLista.columnWidths = new int[]{37, 82, 87, 92, 10, 0};
 		gbl_pnlLista.rowHeights = new int[]{25, 277, 10, 23, 30, 0};
-		gbl_pnlLista.columnWeights = new double[]{1.0, 1.0, 1.0, 1.0, 0.0, Double.MIN_VALUE};
+		gbl_pnlLista.columnWeights = new double[]{0.0, 1.0, 1.0, 1.0, 0.0, Double.MIN_VALUE};
 		gbl_pnlLista.rowWeights = new double[]{0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		pnlLista.setLayout(gbl_pnlLista);
 		
@@ -93,9 +93,9 @@ public class GuiasTuristicos extends JPanel {
 		pnlDatos = new JPanel();
 		add(pnlDatos, BorderLayout.CENTER);
 		GridBagLayout gbl_pnlDatos = new GridBagLayout();
-		gbl_pnlDatos.columnWidths = new int[]{50, 0, 132, 105, 58, 53, 54, 58, 0, 0};
-		gbl_pnlDatos.rowHeights = new int[]{60, 30, 30, 30, 30, 30, 30, 30, 30, 30, 0, 0};
-		gbl_pnlDatos.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_pnlDatos.columnWidths = new int[]{50, 0, 132, 200, 58, 53, 54, 58, 0, 0};
+		gbl_pnlDatos.rowHeights = new int[]{60, 40, 40, 40, 40, 40, 40, 40, 40, 40, 0, 0};
+		gbl_pnlDatos.columnWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gbl_pnlDatos.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		pnlDatos.setLayout(gbl_pnlDatos);
 		
@@ -110,6 +110,7 @@ public class GuiasTuristicos extends JPanel {
 		textNombre = new JTextField();
 		textNombre.setEditable(false);
 		GridBagConstraints gbc_textNombre = new GridBagConstraints();
+		gbc_textNombre.gridwidth = 2;
 		gbc_textNombre.insets = new Insets(0, 0, 5, 5);
 		gbc_textNombre.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textNombre.gridx = 2;
