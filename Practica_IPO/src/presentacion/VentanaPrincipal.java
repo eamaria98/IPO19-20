@@ -210,7 +210,7 @@ public class VentanaPrincipal extends JFrame {
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		panel_1.add(tabbedPane, BorderLayout.CENTER);
 		
-		Circuitos = new CircuitosAmpliada();
+		Circuitos = new Circuitos();
 		tabbedPane.addTab("Circuitos", null, Circuitos, null);
 		
 		ListadoCircuitos = new ListadoCircuitos();
