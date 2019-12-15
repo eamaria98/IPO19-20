@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class CircuitosAmpliada extends JPanel {
-	VentanaPrincipal ventanaprincipal = new VentanaPrincipal();
+	//VentanaPrincipal ventanaprincipal = new VentanaPrincipal();
 	/**
 	 * Create the panel.
 	 */
@@ -60,6 +60,7 @@ public class CircuitosAmpliada extends JPanel {
 		
 		JButton btnReservar = new JButton("Reservar");
 		btnReservar.addActionListener(new BtnReservarActionListener());
+		//btnReservar.addActionListener(new BtnReservarActionListener());
 		GridBagConstraints gbc_btnReservar = new GridBagConstraints();
 		gbc_btnReservar.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnReservar.insets = new Insets(0, 0, 5, 5);
@@ -89,8 +90,11 @@ public class CircuitosAmpliada extends JPanel {
 
 	}
 
+	
 	private class BtnReservarActionListener implements ActionListener {
-		public void actionPerformed(ActionEvent arg0) {
+		public void actionPerformed(ActionEvent e) {
+			Reserva reserva = new Reserva();
+			reserva.setVisible(true);
 			
 		}
 	}

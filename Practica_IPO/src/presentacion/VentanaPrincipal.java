@@ -226,11 +226,11 @@ public class VentanaPrincipal extends JFrame {
 		tabbedPane.addTab("Dise\u00F1ar Ruta", null, DiseñarRuta, null);
 	}
 
-	public JPanel getCircuitos() {
+	/*public JPanel getCircuitos() {
 		return Circuitos;
 	}
 
 	public void setCircuitos(JPanel circuitos) {
 		Circuitos= new Reserva();
-	}
+	}*/
 }

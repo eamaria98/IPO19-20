@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.Rectangle;
 
 public class Reserva extends JPanel {
 	private JTextField txtDescripcion;
@@ -129,9 +130,9 @@ public class Reserva extends JPanel {
 		JPanel pnlLista = new JPanel();
 		add(pnlLista);
 		GridBagLayout gbl_pnlLista = new GridBagLayout();
-		gbl_pnlLista.columnWidths = new int[]{28, 0, 0, 0, 0, 0};
+		gbl_pnlLista.columnWidths = new int[]{28, 0, 0, 120, 0, 0};
 		gbl_pnlLista.rowHeights = new int[]{50, 0, 0, 0, 0, 0};
-		gbl_pnlLista.columnWeights = new double[]{0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_pnlLista.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gbl_pnlLista.rowWeights = new double[]{0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		pnlLista.setLayout(gbl_pnlLista);
 		
