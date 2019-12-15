@@ -10,6 +10,7 @@ import java.awt.Insets;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 public class CircuitosAmpliada extends JPanel {
 	//VentanaPrincipal ventanaprincipal = new VentanaPrincipal();
@@ -43,6 +44,7 @@ public class CircuitosAmpliada extends JPanel {
 		pnlNort.add(btnVistaAmpliada, gbc_btnVistaAmpliada);
 		
 		JButton btnBorrar = new JButton("Borrar");
+		btnBorrar.setIcon(new ImageIcon(CircuitosAmpliada.class.getResource("/presentacion/recycle-bin-filled-tool.png")));
 		GridBagConstraints gbc_btnBorrar = new GridBagConstraints();
 		gbc_btnBorrar.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnBorrar.insets = new Insets(0, 0, 5, 5);
@@ -51,6 +53,7 @@ public class CircuitosAmpliada extends JPanel {
 		pnlNort.add(btnBorrar, gbc_btnBorrar);
 		
 		JButton btnModificar = new JButton("Modificar");
+		btnModificar.setIcon(new ImageIcon(CircuitosAmpliada.class.getResource("/presentacion/refresh-button.png")));
 		GridBagConstraints gbc_btnModificar = new GridBagConstraints();
 		gbc_btnModificar.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnModificar.insets = new Insets(0, 0, 5, 5);
@@ -59,6 +62,7 @@ public class CircuitosAmpliada extends JPanel {
 		pnlNort.add(btnModificar, gbc_btnModificar);
 		
 		JButton btnReservar = new JButton("Reservar");
+		btnReservar.setIcon(new ImageIcon(CircuitosAmpliada.class.getResource("/presentacion/plus.png")));
 		btnReservar.addActionListener(new BtnReservarActionListener());
 		//btnReservar.addActionListener(new BtnReservarActionListener());
 		GridBagConstraints gbc_btnReservar = new GridBagConstraints();
