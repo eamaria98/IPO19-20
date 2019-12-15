@@ -70,6 +70,7 @@ public class GuiasTuristicos extends JPanel {
 		scrollPane.setViewportView(list);
 		
 		btnBorrar = new JButton("Borrar");
+		btnBorrar.setIcon(new ImageIcon(GuiasTuristicos.class.getResource("/presentacion/recycle-bin-filled-tool.png")));
 		GridBagConstraints gbc_btnBorrar = new GridBagConstraints();
 		gbc_btnBorrar.insets = new Insets(0, 0, 5, 5);
 		gbc_btnBorrar.gridx = 1;
@@ -77,6 +78,7 @@ public class GuiasTuristicos extends JPanel {
 		pnlLista.add(btnBorrar, gbc_btnBorrar);
 		
 		btnEditar = new JButton("Editar");
+		btnEditar.setIcon(new ImageIcon(GuiasTuristicos.class.getResource("/presentacion/refresh-button.png")));
 		GridBagConstraints gbc_btnEditar = new GridBagConstraints();
 		gbc_btnEditar.insets = new Insets(0, 0, 5, 5);
 		gbc_btnEditar.gridx = 2;
@@ -84,6 +86,7 @@ public class GuiasTuristicos extends JPanel {
 		pnlLista.add(btnEditar, gbc_btnEditar);
 		
 		btnAñadir = new JButton("A\u00F1adir");
+		btnAñadir.setIcon(new ImageIcon(GuiasTuristicos.class.getResource("/presentacion/plus.png")));
 		GridBagConstraints gbc_btnAñadir = new GridBagConstraints();
 		gbc_btnAñadir.insets = new Insets(0, 0, 5, 5);
 		gbc_btnAñadir.gridx = 3;
