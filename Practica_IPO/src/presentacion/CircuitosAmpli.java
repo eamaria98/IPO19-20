@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.ImageIcon;
 
 public class CircuitosAmpli extends JPanel {
 	private JTextField txtCiudad;
@@ -48,6 +49,7 @@ public class CircuitosAmpli extends JPanel {
 		scrollPane.setViewportView(list);
 		
 		JButton btnBorrar = new JButton("Borrar");
+		btnBorrar.setIcon(new ImageIcon(CircuitosAmpli.class.getResource("/presentacion/recycle-bin-filled-tool.png")));
 		GridBagConstraints gbc_btnBorrar = new GridBagConstraints();
 		gbc_btnBorrar.insets = new Insets(0, 0, 5, 5);
 		gbc_btnBorrar.gridx = 1;
@@ -55,6 +57,7 @@ public class CircuitosAmpli extends JPanel {
 		pnlLista.add(btnBorrar, gbc_btnBorrar);
 		
 		JButton btnModificar = new JButton("Modificar");
+		btnModificar.setIcon(new ImageIcon(CircuitosAmpli.class.getResource("/presentacion/refresh-button.png")));
 		GridBagConstraints gbc_btnModificar = new GridBagConstraints();
 		gbc_btnModificar.insets = new Insets(0, 0, 5, 5);
 		gbc_btnModificar.gridx = 2;
@@ -62,6 +65,7 @@ public class CircuitosAmpli extends JPanel {
 		pnlLista.add(btnModificar, gbc_btnModificar);
 		
 		JButton btnReservar = new JButton("Reservar");
+		btnReservar.setIcon(new ImageIcon(CircuitosAmpli.class.getResource("/presentacion/plus.png")));
 		GridBagConstraints gbc_btnReservar = new GridBagConstraints();
 		gbc_btnReservar.insets = new Insets(0, 0, 5, 5);
 		gbc_btnReservar.gridx = 3;
@@ -71,7 +75,7 @@ public class CircuitosAmpli extends JPanel {
 		JPanel pnlDatos = new JPanel();
 		add(pnlDatos, BorderLayout.CENTER);
 		GridBagLayout gbl_pnlDatos = new GridBagLayout();
-		gbl_pnlDatos.columnWidths = new int[]{0, 0, 100, 100, 0, 0, 0, 0, 30, 0, 0};
+		gbl_pnlDatos.columnWidths = new int[]{0, 0, 100, 100, 0, 40, 0, 0, 30, 0, 0};
 		gbl_pnlDatos.rowHeights = new int[]{45, 40, 40, 40, 40, 40, 40, 40, 0, 45, 0};
 		gbl_pnlDatos.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
 		gbl_pnlDatos.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};

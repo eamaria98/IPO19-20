@@ -20,23 +20,11 @@ public class PestañaCircuito extends JPanel {
 			add(tabbedPane, BorderLayout.CENTER);
 			{
 				pnlNormal = new Circuitos();
-				tabbedPane.addTab("New tab", null, pnlNormal, null);
-				GridBagLayout gbl_pnlNormal = new GridBagLayout();
-				gbl_pnlNormal.columnWidths = new int[]{0};
-				gbl_pnlNormal.rowHeights = new int[]{0};
-				gbl_pnlNormal.columnWeights = new double[]{Double.MIN_VALUE};
-				gbl_pnlNormal.rowWeights = new double[]{Double.MIN_VALUE};
-				pnlNormal.setLayout(gbl_pnlNormal);
+				tabbedPane.addTab("Ventana Normal", null, pnlNormal, null);
 			}
 			{
 				pnlAmpliada = new CircuitosAmpli();
-				tabbedPane.addTab("New tab", null, pnlAmpliada, null);
-				GridBagLayout gbl_pnlAmpliada = new GridBagLayout();
-				gbl_pnlAmpliada.columnWidths = new int[]{0};
-				gbl_pnlAmpliada.rowHeights = new int[]{0};
-				gbl_pnlAmpliada.columnWeights = new double[]{Double.MIN_VALUE};
-				gbl_pnlAmpliada.rowWeights = new double[]{Double.MIN_VALUE};
-				pnlAmpliada.setLayout(gbl_pnlAmpliada);
+				tabbedPane.addTab("Ventana Ampliada", null, pnlAmpliada, null);
 			}
 		}
 

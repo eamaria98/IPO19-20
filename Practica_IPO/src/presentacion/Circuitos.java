@@ -85,8 +85,8 @@ public class Circuitos extends JPanel {
 		JPanel pnlDatos = new JPanel();
 		add(pnlDatos, BorderLayout.CENTER);
 		GridBagLayout gbl_pnlDatos = new GridBagLayout();
-		gbl_pnlDatos.columnWidths = new int[]{0, 378, 213, 0, 242, 38, 0, 0, 0};
-		gbl_pnlDatos.rowHeights = new int[]{0, 40, 40, 40, 40, 40, 40, 40, 0, 0, 0};
+		gbl_pnlDatos.columnWidths = new int[]{140, 378, 213, 0, 242, 38, 0, 0, 0};
+		gbl_pnlDatos.rowHeights = new int[]{40, 40, 40, 40, 40, 40, 40, 40, 0, 0, 0};
 		gbl_pnlDatos.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gbl_pnlDatos.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
 		pnlDatos.setLayout(gbl_pnlDatos);
