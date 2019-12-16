@@ -75,15 +75,15 @@ public class CircuitosAmpli extends JPanel {
 		JPanel pnlDatos = new JPanel();
 		add(pnlDatos, BorderLayout.CENTER);
 		GridBagLayout gbl_pnlDatos = new GridBagLayout();
-		gbl_pnlDatos.columnWidths = new int[]{0, 0, 100, 100, 0, 40, 0, 0, 30, 0, 0};
+		gbl_pnlDatos.columnWidths = new int[]{50, 0, 100, 100, 0, 40, 0, 0, 30, 0, 0};
 		gbl_pnlDatos.rowHeights = new int[]{45, 40, 40, 40, 40, 40, 40, 40, 0, 45, 0};
-		gbl_pnlDatos.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_pnlDatos.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gbl_pnlDatos.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
 		pnlDatos.setLayout(gbl_pnlDatos);
 		
 		JLabel lblCiudad = new JLabel("Ciudad:");
 		GridBagConstraints gbc_lblCiudad = new GridBagConstraints();
-		gbc_lblCiudad.anchor = GridBagConstraints.EAST;
+		gbc_lblCiudad.anchor = GridBagConstraints.WEST;
 		gbc_lblCiudad.insets = new Insets(0, 0, 5, 5);
 		gbc_lblCiudad.gridx = 1;
 		gbc_lblCiudad.gridy = 1;
@@ -103,7 +103,7 @@ public class CircuitosAmpli extends JPanel {
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
 		gbc_btnNewButton.fill = GridBagConstraints.BOTH;
 		gbc_btnNewButton.gridwidth = 3;
-		gbc_btnNewButton.gridheight = 8;
+		gbc_btnNewButton.gridheight = 7;
 		gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);
 		gbc_btnNewButton.gridx = 6;
 		gbc_btnNewButton.gridy = 1;
@@ -111,7 +111,7 @@ public class CircuitosAmpli extends JPanel {
 		
 		JLabel lblMonumento = new JLabel("Monumento:");
 		GridBagConstraints gbc_lblMonumento = new GridBagConstraints();
-		gbc_lblMonumento.anchor = GridBagConstraints.EAST;
+		gbc_lblMonumento.anchor = GridBagConstraints.WEST;
 		gbc_lblMonumento.insets = new Insets(0, 0, 5, 5);
 		gbc_lblMonumento.gridx = 1;
 		gbc_lblMonumento.gridy = 2;
@@ -129,7 +129,7 @@ public class CircuitosAmpli extends JPanel {
 		
 		JLabel lblEntrada = new JLabel("Entrada:");
 		GridBagConstraints gbc_lblEntrada = new GridBagConstraints();
-		gbc_lblEntrada.anchor = GridBagConstraints.EAST;
+		gbc_lblEntrada.anchor = GridBagConstraints.WEST;
 		gbc_lblEntrada.insets = new Insets(0, 0, 5, 5);
 		gbc_lblEntrada.gridx = 1;
 		gbc_lblEntrada.gridy = 3;
@@ -146,7 +146,7 @@ public class CircuitosAmpli extends JPanel {
 		
 		JLabel lblHorarioVisita = new JLabel("Horario visita:");
 		GridBagConstraints gbc_lblHorarioVisita = new GridBagConstraints();
-		gbc_lblHorarioVisita.anchor = GridBagConstraints.EAST;
+		gbc_lblHorarioVisita.anchor = GridBagConstraints.WEST;
 		gbc_lblHorarioVisita.insets = new Insets(0, 0, 5, 5);
 		gbc_lblHorarioVisita.gridx = 1;
 		gbc_lblHorarioVisita.gridy = 4;
@@ -164,7 +164,7 @@ public class CircuitosAmpli extends JPanel {
 		
 		JLabel lblDuracionVisita = new JLabel("Duracion visita:");
 		GridBagConstraints gbc_lblDuracionVisita = new GridBagConstraints();
-		gbc_lblDuracionVisita.anchor = GridBagConstraints.EAST;
+		gbc_lblDuracionVisita.anchor = GridBagConstraints.WEST;
 		gbc_lblDuracionVisita.insets = new Insets(0, 0, 5, 5);
 		gbc_lblDuracionVisita.gridx = 1;
 		gbc_lblDuracionVisita.gridy = 5;
@@ -181,7 +181,7 @@ public class CircuitosAmpli extends JPanel {
 		
 		JLabel lblTipologia = new JLabel("Tipologia:");
 		GridBagConstraints gbc_lblTipologia = new GridBagConstraints();
-		gbc_lblTipologia.anchor = GridBagConstraints.EAST;
+		gbc_lblTipologia.anchor = GridBagConstraints.WEST;
 		gbc_lblTipologia.insets = new Insets(0, 0, 5, 5);
 		gbc_lblTipologia.gridx = 1;
 		gbc_lblTipologia.gridy = 6;
@@ -198,6 +198,7 @@ public class CircuitosAmpli extends JPanel {
 		
 		JLabel lblDescripcion = new JLabel("Descripcion:");
 		GridBagConstraints gbc_lblDescripcion = new GridBagConstraints();
+		gbc_lblDescripcion.anchor = GridBagConstraints.WEST;
 		gbc_lblDescripcion.insets = new Insets(0, 0, 5, 5);
 		gbc_lblDescripcion.gridx = 1;
 		gbc_lblDescripcion.gridy = 7;

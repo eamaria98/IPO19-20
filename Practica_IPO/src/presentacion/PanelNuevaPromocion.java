@@ -38,7 +38,7 @@ public class PanelNuevaPromocion extends JPanel {
 		
 		JLabel lblCiudad = new JLabel("Ciudad:");
 		GridBagConstraints gbc_lblCiudad = new GridBagConstraints();
-		gbc_lblCiudad.anchor = GridBagConstraints.EAST;
+		gbc_lblCiudad.anchor = GridBagConstraints.WEST;
 		gbc_lblCiudad.insets = new Insets(0, 0, 5, 5);
 		gbc_lblCiudad.gridx = 1;
 		gbc_lblCiudad.gridy = 1;
@@ -55,7 +55,7 @@ public class PanelNuevaPromocion extends JPanel {
 		
 		JLabel lblCircuito = new JLabel("Circuito:");
 		GridBagConstraints gbc_lblCircuito = new GridBagConstraints();
-		gbc_lblCircuito.anchor = GridBagConstraints.EAST;
+		gbc_lblCircuito.anchor = GridBagConstraints.WEST;
 		gbc_lblCircuito.insets = new Insets(0, 0, 5, 5);
 		gbc_lblCircuito.gridx = 1;
 		gbc_lblCircuito.gridy = 2;
@@ -72,7 +72,7 @@ public class PanelNuevaPromocion extends JPanel {
 		
 		JLabel lblTipoDescuento = new JLabel("Tipo de descuento:");
 		GridBagConstraints gbc_lblTipoDescuento = new GridBagConstraints();
-		gbc_lblTipoDescuento.anchor = GridBagConstraints.EAST;
+		gbc_lblTipoDescuento.anchor = GridBagConstraints.WEST;
 		gbc_lblTipoDescuento.insets = new Insets(0, 0, 5, 5);
 		gbc_lblTipoDescuento.gridx = 1;
 		gbc_lblTipoDescuento.gridy = 3;
@@ -89,7 +89,7 @@ public class PanelNuevaPromocion extends JPanel {
 		
 		JLabel lblValida = new JLabel("Promocion valida hasta:");
 		GridBagConstraints gbc_lblValida = new GridBagConstraints();
-		gbc_lblValida.anchor = GridBagConstraints.EAST;
+		gbc_lblValida.anchor = GridBagConstraints.WEST;
 		gbc_lblValida.insets = new Insets(0, 0, 5, 5);
 		gbc_lblValida.gridx = 1;
 		gbc_lblValida.gridy = 4;

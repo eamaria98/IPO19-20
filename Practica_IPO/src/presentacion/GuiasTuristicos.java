@@ -41,6 +41,7 @@ public class GuiasTuristicos extends JPanel {
 	private JTextField textPuntuación;
 	private JFormattedTextField ftextTelefono;
 	private JLabel lblFoto;
+	private JTextField textHistorial;
 
 	/**
 	 * Create the panel.
@@ -96,10 +97,10 @@ public class GuiasTuristicos extends JPanel {
 		pnlDatos = new JPanel();
 		add(pnlDatos, BorderLayout.CENTER);
 		GridBagLayout gbl_pnlDatos = new GridBagLayout();
-		gbl_pnlDatos.columnWidths = new int[]{50, 0, 132, 200, 58, 53, 54, 58, 0, 0};
-		gbl_pnlDatos.rowHeights = new int[]{60, 40, 40, 40, 40, 40, 40, 40, 40, 40, 0, 0};
-		gbl_pnlDatos.columnWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gbl_pnlDatos.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_pnlDatos.columnWidths = new int[]{50, 0, 69, 74, 58, 53, 54, 58, 0, 0, 0};
+		gbl_pnlDatos.rowHeights = new int[]{60, 40, 40, 40, 40, 40, 40, 40, 40, 40, 0, 0, 0, 0};
+		gbl_pnlDatos.columnWeights = new double[]{0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_pnlDatos.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		pnlDatos.setLayout(gbl_pnlDatos);
 		
 		lblNombre = new JLabel("Nombre:");
@@ -113,13 +114,22 @@ public class GuiasTuristicos extends JPanel {
 		textNombre = new JTextField();
 		textNombre.setEditable(false);
 		GridBagConstraints gbc_textNombre = new GridBagConstraints();
-		gbc_textNombre.gridwidth = 2;
 		gbc_textNombre.insets = new Insets(0, 0, 5, 5);
 		gbc_textNombre.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textNombre.gridx = 2;
 		gbc_textNombre.gridy = 1;
 		pnlDatos.add(textNombre, gbc_textNombre);
 		textNombre.setColumns(10);
+		
+		lblFoto = new JLabel("");
+		lblFoto.setIcon(new ImageIcon(GuiasTuristicos.class.getResource("/presentacion/prueba.png")));
+		GridBagConstraints gbc_lblFoto = new GridBagConstraints();
+		gbc_lblFoto.gridwidth = 3;
+		gbc_lblFoto.gridheight = 5;
+		gbc_lblFoto.insets = new Insets(0, 0, 5, 0);
+		gbc_lblFoto.gridx = 7;
+		gbc_lblFoto.gridy = 1;
+		pnlDatos.add(lblFoto, gbc_lblFoto);
 		
 		lblApellidos = new JLabel("Apellidos:");
 		GridBagConstraints gbc_lblApellidos = new GridBagConstraints();
@@ -139,16 +149,6 @@ public class GuiasTuristicos extends JPanel {
 		gbc_textApellidos.gridy = 2;
 		pnlDatos.add(textApellidos, gbc_textApellidos);
 		textApellidos.setColumns(10);
-		
-		lblFoto = new JLabel("");
-		lblFoto.setIcon(new ImageIcon(GuiasTuristicos.class.getResource("/presentacion/prueba.png")));
-		GridBagConstraints gbc_lblFoto = new GridBagConstraints();
-		gbc_lblFoto.gridwidth = 3;
-		gbc_lblFoto.gridheight = 5;
-		gbc_lblFoto.insets = new Insets(0, 0, 5, 5);
-		gbc_lblFoto.gridx = 5;
-		gbc_lblFoto.gridy = 2;
-		pnlDatos.add(lblFoto, gbc_lblFoto);
 		
 		lblIdiomas = new JLabel("Idiomas");
 		GridBagConstraints gbc_lblIdiomas = new GridBagConstraints();
@@ -180,7 +180,7 @@ public class GuiasTuristicos extends JPanel {
 		textRestricciones = new JTextField();
 		textRestricciones.setEditable(false);
 		GridBagConstraints gbc_textRestricciones = new GridBagConstraints();
-		gbc_textRestricciones.gridwidth = 2;
+		gbc_textRestricciones.gridwidth = 3;
 		gbc_textRestricciones.insets = new Insets(0, 0, 5, 5);
 		gbc_textRestricciones.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textRestricciones.gridx = 2;
@@ -264,11 +264,24 @@ public class GuiasTuristicos extends JPanel {
 		
 		lblHistorial = new JLabel("Historial rutas: ");
 		GridBagConstraints gbc_lblHistorial = new GridBagConstraints();
+		gbc_lblHistorial.fill = GridBagConstraints.VERTICAL;
 		gbc_lblHistorial.anchor = GridBagConstraints.WEST;
 		gbc_lblHistorial.insets = new Insets(0, 0, 5, 5);
 		gbc_lblHistorial.gridx = 1;
 		gbc_lblHistorial.gridy = 9;
 		pnlDatos.add(lblHistorial, gbc_lblHistorial);
+		
+		textHistorial = new JTextField();
+		textHistorial.setEnabled(false);
+		GridBagConstraints gbc_textHistorial = new GridBagConstraints();
+		gbc_textHistorial.gridheight = 4;
+		gbc_textHistorial.gridwidth = 5;
+		gbc_textHistorial.insets = new Insets(0, 0, 5, 5);
+		gbc_textHistorial.fill = GridBagConstraints.BOTH;
+		gbc_textHistorial.gridx = 2;
+		gbc_textHistorial.gridy = 9;
+		pnlDatos.add(textHistorial, gbc_textHistorial);
+		textHistorial.setColumns(10);
 
 	}
 

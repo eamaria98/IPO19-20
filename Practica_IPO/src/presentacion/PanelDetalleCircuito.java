@@ -33,7 +33,7 @@ public class PanelDetalleCircuito extends JPanel {
 		
 		JLabel lblPersonas = new JLabel("Numero personas han realizado el circuito:");
 		GridBagConstraints gbc_lblPersonas = new GridBagConstraints();
-		gbc_lblPersonas.anchor = GridBagConstraints.EAST;
+		gbc_lblPersonas.anchor = GridBagConstraints.WEST;
 		gbc_lblPersonas.insets = new Insets(0, 0, 5, 5);
 		gbc_lblPersonas.gridx = 1;
 		gbc_lblPersonas.gridy = 2;
@@ -62,7 +62,7 @@ public class PanelDetalleCircuito extends JPanel {
 		
 		JLabel lblPrecio = new JLabel("Precio:");
 		GridBagConstraints gbc_lblPrecio = new GridBagConstraints();
-		gbc_lblPrecio.anchor = GridBagConstraints.EAST;
+		gbc_lblPrecio.anchor = GridBagConstraints.WEST;
 		gbc_lblPrecio.insets = new Insets(0, 0, 5, 5);
 		gbc_lblPrecio.gridx = 1;
 		gbc_lblPrecio.gridy = 3;
@@ -80,7 +80,7 @@ public class PanelDetalleCircuito extends JPanel {
 		
 		JLabel lblIncidencias = new JLabel("Incidencias:");
 		GridBagConstraints gbc_lblIncidencias = new GridBagConstraints();
-		gbc_lblIncidencias.anchor = GridBagConstraints.EAST;
+		gbc_lblIncidencias.anchor = GridBagConstraints.WEST;
 		gbc_lblIncidencias.insets = new Insets(0, 0, 5, 5);
 		gbc_lblIncidencias.gridx = 1;
 		gbc_lblIncidencias.gridy = 4;
@@ -99,7 +99,7 @@ public class PanelDetalleCircuito extends JPanel {
 		JLabel lblOpiniones = new JLabel("Opiniones Turistas:");
 		GridBagConstraints gbc_lblOpiniones = new GridBagConstraints();
 		gbc_lblOpiniones.fill = GridBagConstraints.VERTICAL;
-		gbc_lblOpiniones.anchor = GridBagConstraints.EAST;
+		gbc_lblOpiniones.anchor = GridBagConstraints.WEST;
 		gbc_lblOpiniones.insets = new Insets(0, 0, 5, 5);
 		gbc_lblOpiniones.gridx = 1;
 		gbc_lblOpiniones.gridy = 5;
