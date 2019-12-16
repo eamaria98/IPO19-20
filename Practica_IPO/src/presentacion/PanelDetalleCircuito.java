@@ -11,6 +11,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.BevelBorder;
 import javax.swing.ImageIcon;
+import javax.swing.border.TitledBorder;
 
 public class PanelDetalleCircuito extends JPanel {
 	private JTextField txtCiudad;
@@ -22,22 +23,13 @@ public class PanelDetalleCircuito extends JPanel {
 	 * Create the panel.
 	 */
 	public PanelDetalleCircuito() {
-		setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		setBorder(new TitledBorder(null, "Detalles circuitos", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{13, 0, 191, 0, 0, 0};
-		gridBagLayout.rowHeights = new int[] {63, 0, 40, 41, 40, 37, 70, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.columnWidths = new int[]{13, 0, 191, 0, 0, 71, 0, 0};
+		gridBagLayout.rowHeights = new int[] {63, 0, 40, 41, 40, 37, 70, 0, 0, 0};
+		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
-		
-		JLabel lblFoto = new JLabel("FOTO");
-		lblFoto.setIcon(new ImageIcon(PanelCirAmp.class.getResource("/presentacion/icon user.png")));
-		GridBagConstraints gbc_lblFoto = new GridBagConstraints();
-		gbc_lblFoto.anchor = GridBagConstraints.NORTH;
-		gbc_lblFoto.insets = new Insets(0, 0, 5, 5);
-		gbc_lblFoto.gridx = 3;
-		gbc_lblFoto.gridy = 1;
-		add(lblFoto, gbc_lblFoto);
 		
 		JLabel lblPersonas = new JLabel("Numero personas han realizado el circuito:");
 		GridBagConstraints gbc_lblPersonas = new GridBagConstraints();
@@ -56,6 +48,17 @@ public class PanelDetalleCircuito extends JPanel {
 		gbc_txtCiudad.gridy = 2;
 		add(txtCiudad, gbc_txtCiudad);
 		txtCiudad.setColumns(10);
+		
+		JLabel lblFoto = new JLabel("FOTO");
+		lblFoto.setIcon(new ImageIcon(PanelCirAmp.class.getResource("/presentacion/icon user.png")));
+		GridBagConstraints gbc_lblFoto = new GridBagConstraints();
+		gbc_lblFoto.gridheight = 2;
+		gbc_lblFoto.gridwidth = 2;
+		gbc_lblFoto.anchor = GridBagConstraints.NORTH;
+		gbc_lblFoto.insets = new Insets(0, 0, 5, 5);
+		gbc_lblFoto.gridx = 4;
+		gbc_lblFoto.gridy = 2;
+		add(lblFoto, gbc_lblFoto);
 		
 		JLabel lblPrecio = new JLabel("Precio:");
 		GridBagConstraints gbc_lblPrecio = new GridBagConstraints();
@@ -105,6 +108,7 @@ public class PanelDetalleCircuito extends JPanel {
 		txtTienda = new JTextField();
 		txtTienda.setEditable(false);
 		GridBagConstraints gbc_txtTienda = new GridBagConstraints();
+		gbc_txtTienda.gridwidth = 3;
 		gbc_txtTienda.gridheight = 2;
 		gbc_txtTienda.fill = GridBagConstraints.BOTH;
 		gbc_txtTienda.insets = new Insets(0, 0, 5, 5);

@@ -14,6 +14,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.JButton;
+import javax.swing.border.TitledBorder;
 
 public class PanelNuevaPromocion extends JPanel {
 	private JComboBox comboBoxCiudad;
@@ -27,12 +28,12 @@ public class PanelNuevaPromocion extends JPanel {
 	 * Create the panel.
 	 */
 	public PanelNuevaPromocion() {
-		setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		setBorder(new TitledBorder(null, "Nueva Promoci\u00F3n", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{13, 0, 59, 59, 0, 0};
-		gridBagLayout.rowHeights = new int[] {39, 40, 41, 40, 58, 0, 0, 0};
+		gridBagLayout.rowHeights = new int[] {39, 40, 41, 40, 58, 0, 0, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 1.0, 1.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
 		JLabel lblCiudad = new JLabel("Ciudad:");
@@ -106,17 +107,17 @@ public class PanelNuevaPromocion extends JPanel {
 		btnCancelar = new JButton("Cancelar");
 		btnCancelar.setIcon(new ImageIcon(PanelNuevaPromocion.class.getResource("/presentacion/close.png")));
 		GridBagConstraints gbc_btnCancelar = new GridBagConstraints();
-		gbc_btnCancelar.insets = new Insets(0, 0, 0, 5);
+		gbc_btnCancelar.insets = new Insets(0, 0, 5, 5);
 		gbc_btnCancelar.gridx = 2;
-		gbc_btnCancelar.gridy = 6;
+		gbc_btnCancelar.gridy = 7;
 		add(btnCancelar, gbc_btnCancelar);
 		
 		btnGuardar = new JButton("Guardar");
 		btnGuardar.setIcon(new ImageIcon(PanelNuevaPromocion.class.getResource("/presentacion/tick.png")));
 		GridBagConstraints gbc_btnGuardar = new GridBagConstraints();
-		gbc_btnGuardar.insets = new Insets(0, 0, 0, 5);
+		gbc_btnGuardar.insets = new Insets(0, 0, 5, 5);
 		gbc_btnGuardar.gridx = 3;
-		gbc_btnGuardar.gridy = 6;
+		gbc_btnGuardar.gridy = 7;
 		add(btnGuardar, gbc_btnGuardar);
 
 	}

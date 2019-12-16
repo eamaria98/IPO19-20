@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JList;
 import javax.swing.ImageIcon;
+import javax.swing.border.TitledBorder;
 
 public class ListadoCircuitos extends JPanel {
 	private JTextField textBusquedaCiudad;
@@ -87,6 +88,7 @@ public class ListadoCircuitos extends JPanel {
 		add(panelDetalleCircuito, gbc_panelDetalleCircuito);
 		
 		JList listCircuitos = new JList();
+		listCircuitos.setBorder(new TitledBorder(null, "Proximos circuitos", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		GridBagConstraints gbc_listCircuitos = new GridBagConstraints();
 		gbc_listCircuitos.gridheight = 3;
 		gbc_listCircuitos.gridwidth = 3;
