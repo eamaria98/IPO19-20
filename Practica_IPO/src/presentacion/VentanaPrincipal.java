@@ -222,7 +222,7 @@ public class VentanaPrincipal extends JFrame {
 		Promociones = new Promociones();
 		tabbedPane.addTab("Promociones", null, Promociones, null);
 		
-		DiseñarRuta = new DisenoRuta();
+		DiseñarRuta = new DisenoRuta(this);
 		tabbedPane.addTab("Dise\u00F1ar Ruta", null, DiseñarRuta, null);
 	}
 

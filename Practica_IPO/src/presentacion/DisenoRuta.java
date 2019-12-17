@@ -73,30 +73,20 @@ public class DisenoRuta extends JPanel {
 	private JTextField txtTexto = new JTextField();
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					DisenoRuta window = new DisenoRuta();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
 	/**
 	 * Create the application.
 	 */
-	public DisenoRuta() {
-		frame = new JFrame();
-		frame.getContentPane().setBounds(new Rectangle(0, 0, 700, 700));
+	public DisenoRuta(JFrame frame) {
+		this.frame= frame;
+	//	frame = new JFrame();
+	//	frame.getContentPane().setBounds(new Rectangle(0, 0, 700, 700));
 		{
+			setLayout(new BorderLayout(0, 0));
 			toolBar = new JToolBar();
-			frame.getContentPane().add(toolBar, BorderLayout.NORTH);
+		//	frame.getContentPane().add(toolBar, BorderLayout.NORTH);
+			add(toolBar,BorderLayout.NORTH );
+			
+			
 			{
 				btnCargarMapa = new JButton("");
 				btnCargarMapa.addActionListener(new BtnCargarMapaActionListener());
@@ -145,7 +135,8 @@ public class DisenoRuta extends JPanel {
 		cursorFinal = toolkit.createCustomCursor(imagCursorFinal, new Point(0, 0), "CURSOR_FINAL");
 		{
 			scrollPane = new JScrollPane();
-			frame.getContentPane().add(scrollPane, BorderLayout.CENTER);
+			//frame.getContentPane().add(scrollPane, BorderLayout.CENTER);
+			add(scrollPane, BorderLayout.CENTER);
 		}
 
 		// Creación del área de dibujo personalizada
@@ -155,8 +146,8 @@ public class DisenoRuta extends JPanel {
 		miAreaDibujo.setIcon(null);
 		scrollPane.setViewportView(miAreaDibujo);
 
-		frame.setBounds(0, 0, 700, 700);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	//	frame.setBounds(0, 0, 700, 700);
+	//	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	public class BtnCargarMapaActionListener implements ActionListener {
