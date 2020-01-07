@@ -2,6 +2,7 @@ package presentacion;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Font;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -12,6 +13,7 @@ import dominio.Usuario;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JSeparator;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.ImageIcon;
@@ -31,13 +33,13 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Component;
 import java.awt.Toolkit;
+import java.awt.Color;
 
 public class VentanaPrincipal extends JFrame {
 
 	private JPanel contentPane;
 	private JMenuBar menuBar;
 	private JMenu mnAyuda;
-	private JMenuItem mntmIntrucciones;
 	private JSeparator separator;
 	private JMenuItem mntmAcercaDe;
 	private JMenu mnConfig;
@@ -57,13 +59,19 @@ public class VentanaPrincipal extends JFrame {
 	private JPanel GuiasTuriscos;
 	private JPanel Promociones;
 	private JPanel DiseñarRuta;
-	private JComboBox comboBox;
 	private  JLabel lblNombre;
 	private static JLabel lblFoto;
 	private static JLabel lblUsuario;
 	private JLabel lblAcceso;
 	private static JLabel lblFechaHora;
 	private JButton btnCerrarSesión;
+	private JMenu mnInstrucciones;
+	private JMenuItem mntmGeneral;
+	private JMenuItem mntmCircuitos;
+	private JMenuItem mntmListado;
+	private JMenuItem mntmGuias;
+	private JMenuItem mntmPromociones;
+	private JMenuItem mntmDiseño;
 
 	/**
 	 * Launch the application.
@@ -85,9 +93,9 @@ public class VentanaPrincipal extends JFrame {
 	 * Create the frame.
 	 */
 	public VentanaPrincipal() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(VentanaPrincipal.class.getResource("/presentacion/map.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(VentanaPrincipal.class.getResource("/presentacion/map.png"))); //$NON-NLS-1$
 		setMinimumSize(new Dimension(1280, 720));
-		setTitle("Circuitos Turisticos Ciudad Real ");
+		setTitle(Messages.getString("VentanaPrincipal.1")); //$NON-NLS-1$
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		
@@ -96,45 +104,70 @@ public class VentanaPrincipal extends JFrame {
 		menuBar.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
 		setJMenuBar(menuBar);
 		
-		mnAyuda = new JMenu("");
-		mnAyuda.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/presentacion/question.png")));
+		mnAyuda = new JMenu(""); //$NON-NLS-1$
+		mnAyuda.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/presentacion/question.png"))); //$NON-NLS-1$
 		menuBar.add(mnAyuda);
 		
-		mntmIntrucciones = new JMenuItem("Instrucciones");
-		mnAyuda.add(mntmIntrucciones);
+		mnInstrucciones = new JMenu(Messages.getString("VentanaPrincipal.4")); //$NON-NLS-1$
+		mnAyuda.add(mnInstrucciones);
+		
+		mntmGeneral = new JMenuItem(Messages.getString("VentanaPrincipal.5")); //$NON-NLS-1$
+		mntmGeneral.addActionListener(new InfoGeneralActionListener());
+		mnInstrucciones.add(mntmGeneral);
+		
+		mntmCircuitos = new JMenuItem(Messages.getString("VentanaPrincipal.6")); //$NON-NLS-1$
+		mntmCircuitos.addActionListener(new CircuitoActionListener());
+		mnInstrucciones.add(mntmCircuitos);
+		
+		mntmListado = new JMenuItem(Messages.getString("VentanaPrincipal.7")); //$NON-NLS-1$
+		mntmListado.addActionListener(new ListadoActionListener());
+		mnInstrucciones.add(mntmListado);
+		
+		mntmGuias = new JMenuItem(Messages.getString("VentanaPrincipal.8")); //$NON-NLS-1$
+		mntmGuias.addActionListener(new GuiasActionListener());
+		mnInstrucciones.add(mntmGuias);
+		
+		mntmPromociones = new JMenuItem(Messages.getString("VentanaPrincipal.9")); //$NON-NLS-1$
+		mntmPromociones.addActionListener(new PromocionesActionListener());
+		mnInstrucciones.add(mntmPromociones);
+		
+		mntmDiseño = new JMenuItem(Messages.getString("VentanaPrincipal.10")); //$NON-NLS-1$
+		mntmDiseño.addActionListener(new MapaRutaActionListener());
+		mnInstrucciones.add(mntmDiseño);
 		
 		separator = new JSeparator();
 		mnAyuda.add(separator);
 		
-		mntmAcercaDe = new JMenuItem("Acerca de");
+		mntmAcercaDe = new JMenuItem(Messages.getString("VentanaPrincipal.11")); //$NON-NLS-1$
+		mntmAcercaDe.addActionListener(new AyudaActionListener());
 		mnAyuda.add(mntmAcercaDe);
 		
-		mnConfig = new JMenu("");
-		mnConfig.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/presentacion/setting.png")));
+		mnConfig = new JMenu(""); //$NON-NLS-1$
+		mnConfig.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/presentacion/setting.png"))); //$NON-NLS-1$
 		menuBar.add(mnConfig);
 		
-		mnFuente = new JMenu("Tipo fuente");
+		mnFuente = new JMenu(Messages.getString("VentanaPrincipal.14")); //$NON-NLS-1$
 		mnConfig.add(mnFuente);
 		
-		checkBoxMenuItem = new JCheckBoxMenuItem("Arial");
+		checkBoxMenuItem = new JCheckBoxMenuItem(Messages.getString("VentanaPrincipal.15")); //$NON-NLS-1$
 		mnFuente.add(checkBoxMenuItem);
 		
-		checkBoxMenuItem_1 = new JCheckBoxMenuItem("Times New Roman");
+		checkBoxMenuItem_1 = new JCheckBoxMenuItem(Messages.getString("VentanaPrincipal.16")); //$NON-NLS-1$
 		mnFuente.add(checkBoxMenuItem_1);
 		
 		separator_1 = new JSeparator();
 		mnConfig.add(separator_1);
 		
-		mnTamaño = new JMenu("Tama\u00F1o fuente");
+		mnTamaño = new JMenu(Messages.getString("VentanaPrincipal.17")); //$NON-NLS-1$
 		mnConfig.add(mnTamaño);
 		
-		checkBoxMenuItem_2 = new JCheckBoxMenuItem("Grande");
+		checkBoxMenuItem_2 = new JCheckBoxMenuItem(Messages.getString("VentanaPrincipal.18")); //$NON-NLS-1$
 		mnTamaño.add(checkBoxMenuItem_2);
 		
-		checkBoxMenuItem_3 = new JCheckBoxMenuItem("Mediano");
+		checkBoxMenuItem_3 = new JCheckBoxMenuItem(Messages.getString("VentanaPrincipal.19")); //$NON-NLS-1$
 		mnTamaño.add(checkBoxMenuItem_3);
 		
-		checkBoxMenuItem_4 = new JCheckBoxMenuItem("Peque\u00F1o");
+		checkBoxMenuItem_4 = new JCheckBoxMenuItem(Messages.getString("VentanaPrincipal.20")); //$NON-NLS-1$
 		mnTamaño.add(checkBoxMenuItem_4);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -150,17 +183,7 @@ public class VentanaPrincipal extends JFrame {
 		gbl_panel.rowWeights = new double[]{1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel.setLayout(gbl_panel);
 		
-		comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Espa\u00F1ol", "English"}));
-		GridBagConstraints gbc_comboBox = new GridBagConstraints();
-		gbc_comboBox.anchor = GridBagConstraints.SOUTH;
-		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
-		gbc_comboBox.gridx = 0;
-		gbc_comboBox.gridy = 0;
-		panel.add(comboBox, gbc_comboBox);
-		
-		lblNombre = new JLabel("Nombre:");
+		lblNombre = new JLabel(Messages.getString("VentanaPrincipal.21")); //$NON-NLS-1$
 		GridBagConstraints gbc_lblNombre = new GridBagConstraints();
 		gbc_lblNombre.anchor = GridBagConstraints.SOUTHWEST;
 		gbc_lblNombre.insets = new Insets(0, 0, 5, 5);
@@ -168,7 +191,7 @@ public class VentanaPrincipal extends JFrame {
 		gbc_lblNombre.gridy = 0;
 		panel.add(lblNombre, gbc_lblNombre);
 		
-		lblFoto = new JLabel("");
+		lblFoto = new JLabel(""); //$NON-NLS-1$
 		GridBagConstraints gbc_lblFoto = new GridBagConstraints();
 		gbc_lblFoto.anchor = GridBagConstraints.SOUTH;
 		gbc_lblFoto.insets = new Insets(0, 0, 5, 0);
@@ -177,7 +200,7 @@ public class VentanaPrincipal extends JFrame {
 		gbc_lblFoto.gridy = 0;
 		panel.add(lblFoto, gbc_lblFoto);
 		
-		lblUsuario = new JLabel("");
+		lblUsuario = new JLabel(""); //$NON-NLS-1$
 		GridBagConstraints gbc_lblUsuario = new GridBagConstraints();
 		gbc_lblUsuario.anchor = GridBagConstraints.WEST;
 		gbc_lblUsuario.insets = new Insets(0, 0, 5, 5);
@@ -185,7 +208,7 @@ public class VentanaPrincipal extends JFrame {
 		gbc_lblUsuario.gridy = 1;
 		panel.add(lblUsuario, gbc_lblUsuario);
 		
-		lblAcceso = new JLabel("Fecha y hora del \u00FAltimo acceso:");
+		lblAcceso = new JLabel(Messages.getString("VentanaPrincipal.24")); //$NON-NLS-1$
 		GridBagConstraints gbc_lblAcceso = new GridBagConstraints();
 		gbc_lblAcceso.anchor = GridBagConstraints.WEST;
 		gbc_lblAcceso.insets = new Insets(0, 0, 5, 5);
@@ -193,7 +216,7 @@ public class VentanaPrincipal extends JFrame {
 		gbc_lblAcceso.gridy = 2;
 		panel.add(lblAcceso, gbc_lblAcceso);
 		
-		lblFechaHora = new JLabel("");
+		lblFechaHora = new JLabel(""); //$NON-NLS-1$
 		GridBagConstraints gbc_lblFechaHora = new GridBagConstraints();
 		gbc_lblFechaHora.anchor = GridBagConstraints.NORTHWEST;
 		gbc_lblFechaHora.insets = new Insets(0, 0, 0, 5);
@@ -201,7 +224,9 @@ public class VentanaPrincipal extends JFrame {
 		gbc_lblFechaHora.gridy = 3;
 		panel.add(lblFechaHora, gbc_lblFechaHora);
 		
-		btnCerrarSesión = new JButton("Cerrar Sesi\u00F3n");
+		btnCerrarSesión = new JButton(Messages.getString("VentanaPrincipal.26")); //$NON-NLS-1$
+		btnCerrarSesión.setIcon(new ImageIcon(VentanaPrincipal.class.getResource("/presentacion/logout.png"))); //$NON-NLS-1$
+		btnCerrarSesión.setBackground(new Color(204, 204, 255));
 		btnCerrarSesión.addActionListener(new BtnCerrarSesiónActionListener());
 		GridBagConstraints gbc_btnCerrarSesión = new GridBagConstraints();
 		gbc_btnCerrarSesión.anchor = GridBagConstraints.NORTH;
@@ -217,19 +242,19 @@ public class VentanaPrincipal extends JFrame {
 		panel_1.add(tabbedPane, BorderLayout.CENTER);
 		
 		Circuitos = new PestañaCircuito();
-		tabbedPane.addTab("Circuitos", null, Circuitos, null);
+		tabbedPane.addTab(Messages.getString("VentanaPrincipal.28"), null, Circuitos, null); //$NON-NLS-1$
 		
 		ListadoCircuitos = new ListadoCircuitos();
-		tabbedPane.addTab("Listado Circuitos", null, ListadoCircuitos, null);
+		tabbedPane.addTab(Messages.getString("VentanaPrincipal.29"), null, ListadoCircuitos, null); //$NON-NLS-1$
 		
 		GuiasTuriscos = new GuiasTuristicos();
-		tabbedPane.addTab("Guias tur\u00EDsticos", null, GuiasTuriscos, null);
+		tabbedPane.addTab(Messages.getString("VentanaPrincipal.30"), null, GuiasTuriscos, null); //$NON-NLS-1$
 		
 		Promociones = new Promociones();
-		tabbedPane.addTab("Promociones", null, Promociones, null);
+		tabbedPane.addTab(Messages.getString("VentanaPrincipal.31"), null, Promociones, null); //$NON-NLS-1$
 		
 		DiseñarRuta = new DisenoRuta(this);
-		tabbedPane.addTab("Dise\u00F1ar Ruta", null, DiseñarRuta, null);
+		tabbedPane.addTab(Messages.getString("VentanaPrincipal.32"), null, DiseñarRuta, null); //$NON-NLS-1$
 	}
 
 	private class BtnCerrarSesiónActionListener implements ActionListener {
@@ -237,9 +262,51 @@ public class VentanaPrincipal extends JFrame {
 			JFrame frame=Login.getFrmLogin();
 			frame.setVisible(true);
 			setVisible(false);
-			
 		}
 	}
+	
+	private class InfoGeneralActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			JOptionPane.showMessageDialog(null,Messages.getString("VentanaPrincipal.33")); //$NON-NLS-1$
+		}
+	}
+	
+	private class CircuitoActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			JOptionPane.showMessageDialog(null,Messages.getString("VentanaPrincipal.34")); //$NON-NLS-1$
+		}
+	}
+	
+	private class ListadoActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			JOptionPane.showMessageDialog(null,Messages.getString("VentanaPrincipal.35")); //$NON-NLS-1$
+		}
+	}
+	
+	private class GuiasActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			JOptionPane.showMessageDialog(null,Messages.getString("VentanaPrincipal.36")); //$NON-NLS-1$
+		}
+	}
+	
+	private class PromocionesActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			JOptionPane.showMessageDialog(null,Messages.getString("VentanaPrincipal.37")); //$NON-NLS-1$
+		}
+	}
+	
+	private class MapaRutaActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			JOptionPane.showMessageDialog(null,Messages.getString("VentanaPrincipal.38")); //$NON-NLS-1$
+		}
+	}
+	
+	private class AyudaActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			JOptionPane.showMessageDialog(null,Messages.getString("VentanaPrincipal.39")); //$NON-NLS-1$
+		}
+	}
+
 	
 	public static String getPersonal() {
 		return lblUsuario.getText();

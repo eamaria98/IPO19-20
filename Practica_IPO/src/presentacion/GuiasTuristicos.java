@@ -25,9 +25,14 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.text.MaskFormatter;
+
+import com.sun.xml.internal.messaging.saaj.packaging.mime.internet.ParseException;
+
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.AbstractListModel;
 import javax.swing.DefaultListModel;
+import java.awt.Color;
 
 public class GuiasTuristicos extends JPanel {
 	private static ArrayList<Guias> listaGuias = Guias.generarGuias();
@@ -91,25 +96,31 @@ public class GuiasTuristicos extends JPanel {
 		list.addListSelectionListener(new ListListSelectionListener());
 		scrollPane.setViewportView(list);
 
-		btnBorrar = new JButton("Borrar");
+		btnBorrar = new JButton(Messages.getString("GuiasTuristicos.0")); //$NON-NLS-1$
+		btnBorrar.setBackground(new Color(255, 102, 102));
+		btnBorrar.addActionListener(new BtnBorrarActionListener());
 		btnBorrar
-				.setIcon(new ImageIcon(GuiasTuristicos.class.getResource("/presentacion/recycle-bin-filled-tool.png")));
+				.setIcon(new ImageIcon(GuiasTuristicos.class.getResource("/presentacion/recycle-bin-filled-tool.png"))); //$NON-NLS-1$
 		GridBagConstraints gbc_btnBorrar = new GridBagConstraints();
 		gbc_btnBorrar.insets = new Insets(0, 0, 5, 5);
 		gbc_btnBorrar.gridx = 1;
 		gbc_btnBorrar.gridy = 3;
 		pnlLista.add(btnBorrar, gbc_btnBorrar);
 
-		btnEditar = new JButton("Editar");
-		btnEditar.setIcon(new ImageIcon(GuiasTuristicos.class.getResource("/presentacion/refresh-button.png")));
+		btnEditar = new JButton(Messages.getString("GuiasTuristicos.2")); //$NON-NLS-1$
+		btnEditar.setBackground(Color.GRAY);
+		btnEditar.addActionListener(new BtnEditarActionListener());
+		btnEditar.setIcon(new ImageIcon(GuiasTuristicos.class.getResource("/presentacion/refresh-button.png"))); //$NON-NLS-1$
 		GridBagConstraints gbc_btnEditar = new GridBagConstraints();
 		gbc_btnEditar.insets = new Insets(0, 0, 5, 5);
 		gbc_btnEditar.gridx = 2;
 		gbc_btnEditar.gridy = 3;
 		pnlLista.add(btnEditar, gbc_btnEditar);
 
-		btnAñadir = new JButton("A\u00F1adir");
-		btnAñadir.setIcon(new ImageIcon(GuiasTuristicos.class.getResource("/presentacion/plus.png")));
+		btnAñadir = new JButton(Messages.getString("GuiasTuristicos.4")); //$NON-NLS-1$
+		btnAñadir.setBackground(new Color(153, 255, 102));
+		btnAñadir.addActionListener(new BtnAñadirActionListener());
+		btnAñadir.setIcon(new ImageIcon(GuiasTuristicos.class.getResource("/presentacion/plus.png"))); //$NON-NLS-1$
 		GridBagConstraints gbc_btnAñadir = new GridBagConstraints();
 		gbc_btnAñadir.insets = new Insets(0, 0, 5, 5);
 		gbc_btnAñadir.gridx = 3;
@@ -119,15 +130,15 @@ public class GuiasTuristicos extends JPanel {
 		pnlDatos = new JPanel();
 		add(pnlDatos, BorderLayout.CENTER);
 		GridBagLayout gbl_pnlDatos = new GridBagLayout();
-		gbl_pnlDatos.columnWidths = new int[] { 50, 0, 60, 55, 35, 60, 20, 65, 0, 20, 0, 0 };
-		gbl_pnlDatos.rowHeights = new int[] { 60, 40, 40, 40, 40, 40, 40, 40, 40, 40, 0, 0, 0, 0, 0, 0 };
+		gbl_pnlDatos.columnWidths = new int[] { 50, 0, 60, 55, 55, 60, 50, 200, 40, 40, 0, 0 };
+		gbl_pnlDatos.rowHeights = new int[] { 60, 40, 40, 40, 40, 40, 40, 40, 40, 40, 10, 0, 0, 0, 0, 0 };
 		gbl_pnlDatos.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
 				Double.MIN_VALUE };
-		gbl_pnlDatos.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-				Double.MIN_VALUE };
+		gbl_pnlDatos.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+				0.0, Double.MIN_VALUE };
 		pnlDatos.setLayout(gbl_pnlDatos);
 
-		lblNombre = new JLabel("Nombre:");
+		lblNombre = new JLabel(Messages.getString("GuiasTuristicos.6")); //$NON-NLS-1$
 		GridBagConstraints gbc_lblNombre = new GridBagConstraints();
 		gbc_lblNombre.anchor = GridBagConstraints.WEST;
 		gbc_lblNombre.insets = new Insets(0, 0, 5, 5);
@@ -146,7 +157,7 @@ public class GuiasTuristicos extends JPanel {
 		pnlDatos.add(textNombre, gbc_textNombre);
 		textNombre.setColumns(10);
 
-		lblApellidos = new JLabel("Apellidos:");
+		lblApellidos = new JLabel(Messages.getString("GuiasTuristicos.7")); //$NON-NLS-1$
 		GridBagConstraints gbc_lblApellidos = new GridBagConstraints();
 		gbc_lblApellidos.anchor = GridBagConstraints.WEST;
 		gbc_lblApellidos.insets = new Insets(0, 0, 5, 5);
@@ -165,7 +176,7 @@ public class GuiasTuristicos extends JPanel {
 		pnlDatos.add(textApellidos, gbc_textApellidos);
 		textApellidos.setColumns(10);
 
-		lblIdiomas = new JLabel("Idiomas");
+		lblIdiomas = new JLabel(Messages.getString("GuiasTuristicos.8")); //$NON-NLS-1$
 		GridBagConstraints gbc_lblIdiomas = new GridBagConstraints();
 		gbc_lblIdiomas.anchor = GridBagConstraints.WEST;
 		gbc_lblIdiomas.insets = new Insets(0, 0, 5, 5);
@@ -184,18 +195,19 @@ public class GuiasTuristicos extends JPanel {
 		pnlDatos.add(textIdiomas, gbc_textIdiomas);
 		textIdiomas.setColumns(10);
 
-		btnFoto = new JButton("Foto");
+		btnFoto = new JButton(""); //$NON-NLS-1$
+		btnFoto.setIcon(new ImageIcon(GuiasTuristicos.class.getResource("/presentacion/dslr-camera.png")));
 		btnFoto.addActionListener(new BtnFotoActionListener());
-		btnFoto.setEnabled(false);
 		GridBagConstraints gbc_btnFoto = new GridBagConstraints();
+		gbc_btnFoto.fill = GridBagConstraints.BOTH;
 		gbc_btnFoto.gridwidth = 2;
-		gbc_btnFoto.gridheight = 9;
+		gbc_btnFoto.gridheight = 6;
 		gbc_btnFoto.insets = new Insets(0, 0, 5, 5);
 		gbc_btnFoto.gridx = 8;
 		gbc_btnFoto.gridy = 1;
 		pnlDatos.add(btnFoto, gbc_btnFoto);
 
-		lblRestricciones = new JLabel("Restricciones disponibilidad:");
+		lblRestricciones = new JLabel(Messages.getString("GuiasTuristicos.10")); //$NON-NLS-1$
 		GridBagConstraints gbc_lblRestricciones = new GridBagConstraints();
 		gbc_lblRestricciones.anchor = GridBagConstraints.WEST;
 		gbc_lblRestricciones.insets = new Insets(0, 0, 5, 5);
@@ -214,7 +226,7 @@ public class GuiasTuristicos extends JPanel {
 		pnlDatos.add(textRestricciones, gbc_textRestricciones);
 		textRestricciones.setColumns(10);
 
-		lblTelefono = new JLabel("Tel\u00E9fono:");
+		lblTelefono = new JLabel(Messages.getString("GuiasTuristicos.11")); //$NON-NLS-1$
 		GridBagConstraints gbc_lblTelefono = new GridBagConstraints();
 		gbc_lblTelefono.anchor = GridBagConstraints.WEST;
 		gbc_lblTelefono.insets = new Insets(0, 0, 5, 5);
@@ -222,9 +234,18 @@ public class GuiasTuristicos extends JPanel {
 		gbc_lblTelefono.gridy = 5;
 		pnlDatos.add(lblTelefono, gbc_lblTelefono);
 
-		ftextTelefono = new JFormattedTextField();
-		ftextTelefono.setEditable(false);
-		ftextTelefono.setText("(   )            ");
+		MaskFormatter formatTlf;
+		try {
+			formatTlf = new MaskFormatter("'(###')' ###' ###' ###"); //$NON-NLS-1$
+			formatTlf.setPlaceholderCharacter('*');
+			ftextTelefono = new JFormattedTextField(formatTlf);
+			ftextTelefono.setEditable(false);
+		} catch (Exception p) {
+			p.printStackTrace();
+		}
+		
+		
+		
 		GridBagConstraints gbc_ftextTelefono = new GridBagConstraints();
 		gbc_ftextTelefono.gridwidth = 2;
 		gbc_ftextTelefono.insets = new Insets(0, 0, 5, 5);
@@ -233,7 +254,7 @@ public class GuiasTuristicos extends JPanel {
 		gbc_ftextTelefono.gridy = 5;
 		pnlDatos.add(ftextTelefono, gbc_ftextTelefono);
 
-		lblCorreo = new JLabel("Correo electr\u00F3nico:");
+		lblCorreo = new JLabel(Messages.getString("GuiasTuristicos.13")); //$NON-NLS-1$
 		GridBagConstraints gbc_lblCorreo = new GridBagConstraints();
 		gbc_lblCorreo.anchor = GridBagConstraints.WEST;
 		gbc_lblCorreo.insets = new Insets(0, 0, 5, 5);
@@ -252,7 +273,7 @@ public class GuiasTuristicos extends JPanel {
 		pnlDatos.add(textCorreo, gbc_textCorreo);
 		textCorreo.setColumns(10);
 
-		lblPrecio = new JLabel("Precio/hora:");
+		lblPrecio = new JLabel(Messages.getString("GuiasTuristicos.14")); //$NON-NLS-1$
 		GridBagConstraints gbc_lblPrecio = new GridBagConstraints();
 		gbc_lblPrecio.anchor = GridBagConstraints.WEST;
 		gbc_lblPrecio.insets = new Insets(0, 0, 5, 5);
@@ -270,7 +291,7 @@ public class GuiasTuristicos extends JPanel {
 		pnlDatos.add(textPrecio, gbc_textPrecio);
 		textPrecio.setColumns(10);
 
-		lblPuntuación = new JLabel("Puntuaci\u00F3n:");
+		lblPuntuación = new JLabel(Messages.getString("GuiasTuristicos.15")); //$NON-NLS-1$
 		GridBagConstraints gbc_lblPuntuación = new GridBagConstraints();
 		gbc_lblPuntuación.anchor = GridBagConstraints.WEST;
 		gbc_lblPuntuación.insets = new Insets(0, 0, 5, 5);
@@ -288,7 +309,7 @@ public class GuiasTuristicos extends JPanel {
 		pnlDatos.add(textPuntuacion, gbc_textPuntuacion);
 		textPuntuacion.setColumns(10);
 
-		lblHistorial = new JLabel("Historial rutas: ");
+		lblHistorial = new JLabel(Messages.getString("GuiasTuristicos.16")); //$NON-NLS-1$
 		GridBagConstraints gbc_lblHistorial = new GridBagConstraints();
 		gbc_lblHistorial.fill = GridBagConstraints.VERTICAL;
 		gbc_lblHistorial.anchor = GridBagConstraints.WEST;
@@ -298,7 +319,7 @@ public class GuiasTuristicos extends JPanel {
 		pnlDatos.add(lblHistorial, gbc_lblHistorial);
 
 		textHistorial = new JTextField();
-		textHistorial.setEnabled(false);
+		textHistorial.setEditable(false);
 		GridBagConstraints gbc_textHistorial = new GridBagConstraints();
 		gbc_textHistorial.gridheight = 4;
 		gbc_textHistorial.gridwidth = 5;
@@ -308,23 +329,33 @@ public class GuiasTuristicos extends JPanel {
 		gbc_textHistorial.gridy = 9;
 		pnlDatos.add(textHistorial, gbc_textHistorial);
 		textHistorial.setColumns(10);
-		
-		btnCancelar = new JButton("Cancelar");
-		btnCancelar.setIcon(new ImageIcon(GuiasTuristicos.class.getResource("/presentacion/close.png")));
+
+		btnCancelar = new JButton(Messages.getString("GuiasTuristicos.17")); //$NON-NLS-1$
+		btnCancelar.setBackground(new Color(255, 0, 51));
+		btnCancelar.addActionListener(new BtnCancelarActionListener());
+		btnCancelar.setIcon(new ImageIcon(GuiasTuristicos.class.getResource("/presentacion/close.png"))); //$NON-NLS-1$
+		btnCancelar.setEnabled(false);
+		btnCancelar.setVisible(false);
 		GridBagConstraints gbc_btnCancelar = new GridBagConstraints();
+		gbc_btnCancelar.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnCancelar.insets = new Insets(0, 0, 0, 5);
 		gbc_btnCancelar.gridx = 8;
 		gbc_btnCancelar.gridy = 14;
 		pnlDatos.add(btnCancelar, gbc_btnCancelar);
-		
-		btnGuardar = new JButton("Guardar");
-		btnGuardar.setIcon(new ImageIcon(GuiasTuristicos.class.getResource("/presentacion/tick.png")));
+
+		btnGuardar = new JButton(Messages.getString("GuiasTuristicos.19")); //$NON-NLS-1$
+		btnGuardar.setEnabled(false);
+		btnGuardar.setBackground(new Color(51, 204, 51));
+		btnGuardar.addActionListener(new BtnGuardarActionListener());
+		btnGuardar.setIcon(new ImageIcon(GuiasTuristicos.class.getResource("/presentacion/tick.png"))); //$NON-NLS-1$
+		btnGuardar.setVisible(false);
 		GridBagConstraints gbc_btnGuardar = new GridBagConstraints();
+		gbc_btnGuardar.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnGuardar.insets = new Insets(0, 0, 0, 5);
 		gbc_btnGuardar.gridx = 9;
 		gbc_btnGuardar.gridy = 14;
 		pnlDatos.add(btnGuardar, gbc_btnGuardar);
-
+		crearLista();
 	}
 
 	private class BtnFotoActionListener implements ActionListener {
@@ -348,8 +379,82 @@ public class GuiasTuristicos extends JPanel {
 
 	private class ListListSelectionListener implements ListSelectionListener {
 		public void valueChanged(ListSelectionEvent arg0) {
+			
 			cargarGuias(listaGuias.get(list.getSelectedIndex()));
-			crearLista(); 
+		}
+	}
+
+	private class BtnAñadirActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			habilitar(true);
+			textNombre.setText(""); //$NON-NLS-1$
+			textApellidos.setText(""); //$NON-NLS-1$
+			textIdiomas.setText(""); //$NON-NLS-1$
+			textRestricciones.setText(""); //$NON-NLS-1$
+			ftextTelefono.setText(""); //$NON-NLS-1$
+			textCorreo.setText(""); //$NON-NLS-1$
+			textPrecio.setText(""); //$NON-NLS-1$
+			textPuntuacion.setText(""); //$NON-NLS-1$
+			textHistorial.setText(""); //$NON-NLS-1$
+			btnFoto.setIcon(null);
+			setOpcion(1);
+		}
+	}
+
+	private class BtnEditarActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			habilitar(true);
+			setOpcion(2);
+		}
+	}
+
+	private class BtnBorrarActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			try {
+				listaGuias.remove(list.getSelectedIndex());
+				crearLista();
+			}catch(ArrayIndexOutOfBoundsException ai) {
+				
+			}
+		}
+	}
+
+	private class BtnCancelarActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			habilitar(false);
+		}
+	}
+
+	private class BtnGuardarActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			habilitar(false);
+			//btnFoto.setText("");
+			try {
+				switch (getOpcion()) {
+				case 1:
+					listaGuias.add(new Guias(textNombre.getText(), textApellidos.getText(), textIdiomas.getText(), textRestricciones.getText(), ftextTelefono.getText(), textCorreo.getText(), textPrecio.getText(), textPuntuacion.getText(), textHistorial.getText(), getFoto()));
+					break;
+				case 2:
+					Guias gui = listaGuias.get(list.getSelectedIndex());
+					gui.setNombre(textNombre.getText());
+					gui.setApellidos(textApellidos.getText());
+					gui.setIdiomas(textIdiomas.getText());
+					gui.setRestricciones(textRestricciones.getText());
+					gui.setTelefono(ftextTelefono.getText());
+					gui.setCorreo(textCorreo.getText());
+					gui.setPrecio_hora(textPrecio.getText());
+					gui.setPuntuacion(textPuntuacion.getText());
+					gui.setHistorial_rutas(textHistorial.getText());
+					gui.setFoto(getFoto());
+					listaGuias.set(list.getSelectedIndex(), gui);
+					break;
+				}
+
+				crearLista();
+			} catch (Exception e2) {
+				
+			}
+
 		}
 	}
 
@@ -362,19 +467,20 @@ public class GuiasTuristicos extends JPanel {
 		textCorreo.setText(guia.getCorreo());
 		textPrecio.setText(guia.getPrecio_hora());
 		textPuntuacion.setText(guia.getPuntuacion());
+		textHistorial.setText(guia.getHistorial_rutas());
 		btnFoto.setIcon(new ImageIcon(guia.getFoto()));
 	}
 
 	void crearLista() {
 		DefaultListModel modelo = new DefaultListModel();
-		for (int i = 0; i <= listaGuias.size() - 1; i++) {
+		for (int i = 0; i <= listaGuias.size() - 1 ; i++) {
 			modelo.addElement(listaGuias.get(i).getNombre());
 		}
 		list.setModel(modelo);
 	}
-	
-private void habilitar(boolean opcion) {
-		
+
+	private void habilitar(boolean opcion) {
+
 		btnGuardar.setVisible(opcion);
 		btnGuardar.setEnabled(opcion);
 		btnCancelar.setVisible(opcion);
@@ -387,9 +493,11 @@ private void habilitar(boolean opcion) {
 		textCorreo.setEditable(opcion);
 		textPrecio.setEditable(opcion);
 		textPuntuacion.setEditable(opcion);
+		textHistorial.setEditable(opcion);
+		//btnFoto.setEnabled(opcion);
 	}
 
-	private URL getFot() {
+	private URL getFoto() {
 		return foto;
 	}
 
@@ -397,11 +505,11 @@ private void habilitar(boolean opcion) {
 		this.foto = foto;
 	}
 
-	private int opcion() {
+	private int getOpcion() {
 		return opcion;
 	}
 
-	private void opcion(int opcion) {
+	private void setOpcion(int opcion) {
 		this.opcion = opcion;
 	}
 

@@ -43,8 +43,8 @@ public class Usuario {
 	}
 	public static ArrayList<Usuario> generarUsuario() {
 		ArrayList<Usuario> usuarios =new ArrayList<Usuario>();
-		usuarios.add(new Usuario("Andres Gutierrez","agc1995","04/01/20 10:02",Circuitos.class.getResource("/presentacion/user_andres.jpg")));
-		usuarios.add(new Usuario("Maria Espinosa","mea1998","09/01/20 19:45",Circuitos.class.getResource("/presentacion/user_maria.jpg")));
+		usuarios.add(new Usuario("Andres Gutierrez","agc1995","04/01/19 10:02",Circuitos.class.getResource("/presentacion/user_andres.jpg")));
+		usuarios.add(new Usuario("Maria Espinosa","mea1998","09/01/19 19:45",Circuitos.class.getResource("/presentacion/user_maria.jpg")));
 		return usuarios;
 	}
 	

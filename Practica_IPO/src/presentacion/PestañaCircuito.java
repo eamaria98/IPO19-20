@@ -20,11 +20,11 @@ public class PestañaCircuito extends JPanel {
 			add(tabbedPane, BorderLayout.CENTER);
 			{
 				pnlNormal = new Circuitos();
-				tabbedPane.addTab("Ventana Normal", null, pnlNormal, null);
+				tabbedPane.addTab(Messages.getString("PestañaCircuito.0"), null, pnlNormal, null); //$NON-NLS-1$
 			}
 			{
 				pnlAmpliada = new CircuitosAmpli();
-				tabbedPane.addTab("Ventana Ampliada", null, pnlAmpliada, null);
+				tabbedPane.addTab(Messages.getString("PestañaCircuito.1"), null, pnlAmpliada, null); //$NON-NLS-1$
 			}
 		}
 

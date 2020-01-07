@@ -28,6 +28,8 @@ import javax.swing.JCheckBox;
 import javax.swing.JButton;
 import java.awt.Window.Type;
 import java.awt.ComponentOrientation;
+import java.awt.Dimension;
+
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.AbstractAction;
@@ -44,6 +46,8 @@ import java.util.ArrayList;
 import javax.swing.JCheckBoxMenuItem;
 import java.awt.Toolkit;
 import javax.swing.JPasswordField;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class Login {
 
@@ -56,8 +60,7 @@ public class Login {
 	private JLabel lblIconLock;
 	private JLabel lblIconUser;
 	private JLabel lblAviso;
-	private JCheckBox chckbxRecuerdame;
-	private JButton btnEntrar;
+	private static JButton btnEntrar;
 	private JMenuBar menuBar;
 	private JMenu mnAyuda;
 	private JMenu mnConfig;
@@ -76,6 +79,7 @@ public class Login {
 	private JCheckBoxMenuItem chckbxmntmMediano;
 	private int usuario;
 	private ArrayList<Usuario> listaUsuarios = Usuario.generarUsuario();
+	private JComboBox comboBox;
 
 	/**
 	 * Launch the application.
@@ -107,105 +111,120 @@ public class Login {
 		frmLogin = new JFrame();
 		frmLogin.setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/presentacion/map.png")));
 		frmLogin.setTitle("Login");
+		frmLogin.setResizable(false);
 		frmLogin.setBounds(100, 100, 450, 300);
 		frmLogin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		panel = new JPanel();
 		frmLogin.getContentPane().add(panel, BorderLayout.CENTER);
 		GridBagLayout gbl_panel = new GridBagLayout();
-		gbl_panel.columnWidths = new int[] { 20, 24, 0, 127, 40, 85, 35, 0 };
-		gbl_panel.rowHeights = new int[] { 40, 0, 10, 25, 0, 25, 10, 0 };
-		gbl_panel.columnWeights = new double[] { 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
-		gbl_panel.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gbl_panel.columnWidths = new int[] { 9, 20, 24, 0, 127, 40, 85, 35, 0 };
+		gbl_panel.rowHeights = new int[] { 40, 10, 10, 25, 0, 25, 10, 0, 0 };
+		gbl_panel.columnWeights = new double[] { 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gbl_panel.rowWeights = new double[] { 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		panel.setLayout(gbl_panel);
-
-		lblIconUser = new JLabel("");
-		lblIconUser.setIcon(new ImageIcon(Login.class.getResource("/presentacion/icon user.png")));
-		GridBagConstraints gbc_lblIconUser = new GridBagConstraints();
-		gbc_lblIconUser.insets = new Insets(0, 0, 5, 5);
-		gbc_lblIconUser.gridx = 1;
-		gbc_lblIconUser.gridy = 1;
-		panel.add(lblIconUser, gbc_lblIconUser);
-
-		lblUsuario = new JLabel("Usuario:");
-		GridBagConstraints gbc_lblUsuario = new GridBagConstraints();
-		gbc_lblUsuario.fill = GridBagConstraints.VERTICAL;
-		gbc_lblUsuario.anchor = GridBagConstraints.WEST;
-		gbc_lblUsuario.insets = new Insets(0, 0, 5, 5);
-		gbc_lblUsuario.gridx = 2;
-		gbc_lblUsuario.gridy = 1;
-		panel.add(lblUsuario, gbc_lblUsuario);
-
-		textUsuario = new JTextField();
-		textUsuario.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// Activamos los campos de la contraseña
-				pwdPasswd.setEnabled(true);
-				lblContraseña.setEnabled(true);
-				// Pasamos el cursos al campo de la contraseña
-				pwdPasswd.requestFocus();
-			}
-		});
-		GridBagConstraints gbc_textUsuario = new GridBagConstraints();
-		gbc_textUsuario.fill = GridBagConstraints.BOTH;
-		gbc_textUsuario.insets = new Insets(0, 0, 5, 5);
-		gbc_textUsuario.gridx = 3;
-		gbc_textUsuario.gridy = 1;
-		panel.add(textUsuario, gbc_textUsuario);
-		textUsuario.setColumns(10);
-
-		lblIconLock = new JLabel("");
-		lblIconLock.setIcon(new ImageIcon(Login.class.getResource("/presentacion/icon lock (1).png")));
-		GridBagConstraints gbc_lblIconLock = new GridBagConstraints();
-		gbc_lblIconLock.insets = new Insets(0, 0, 5, 5);
-		gbc_lblIconLock.gridx = 1;
-		gbc_lblIconLock.gridy = 3;
-		panel.add(lblIconLock, gbc_lblIconLock);
-
-		lblContraseña = new JLabel("Contrase\u00F1a:");
-		lblContraseña.setEnabled(false);
-		GridBagConstraints gbc_lblContraseña = new GridBagConstraints();
-		gbc_lblContraseña.anchor = GridBagConstraints.EAST;
-		gbc_lblContraseña.insets = new Insets(0, 0, 5, 5);
-		gbc_lblContraseña.gridx = 2;
-		gbc_lblContraseña.gridy = 3;
-		panel.add(lblContraseña, gbc_lblContraseña);
-
-		pwdPasswd = new JPasswordField();
-		pwdPasswd.addActionListener(new PwdPasswdActionListener());
-		GridBagConstraints gbc_pwdPasswd = new GridBagConstraints();
-		gbc_pwdPasswd.insets = new Insets(0, 0, 5, 5);
-		gbc_pwdPasswd.fill = GridBagConstraints.HORIZONTAL;
-		gbc_pwdPasswd.gridx = 3;
-		gbc_pwdPasswd.gridy = 3;
-		panel.add(pwdPasswd, gbc_pwdPasswd);
+		
+				pwdPasswd = new JPasswordField();
+				pwdPasswd.setEnabled(false);
+				pwdPasswd.setEditable(false);
+				pwdPasswd.addActionListener(new PwdPasswdActionListener());
+										
+										comboBox = new JComboBox();
+										comboBox.addActionListener(new ActionListener() {
+											public void actionPerformed(ActionEvent e) {
+												if (comboBox.getSelectedIndex()==1) {
+													Messages.setIdioma("inglés");
+												}else {
+													Messages.setIdioma("español");
+												}
+											}
+										});
+										comboBox.setModel(new DefaultComboBoxModel(new String[] {"Espa\u00F1ol", "English"}));
+										comboBox.setSelectedIndex(0);
+										GridBagConstraints gbc_comboBox = new GridBagConstraints();
+										gbc_comboBox.gridwidth = 2;
+										gbc_comboBox.insets = new Insets(0, 0, 5, 5);
+										gbc_comboBox.gridx = 1;
+										gbc_comboBox.gridy = 0;
+										panel.add(comboBox, gbc_comboBox);
+								
+										lblIconUser = new JLabel("");
+										lblIconUser.setIcon(new ImageIcon(Login.class.getResource("/presentacion/icon user.png")));
+										GridBagConstraints gbc_lblIconUser = new GridBagConstraints();
+										gbc_lblIconUser.insets = new Insets(0, 0, 5, 5);
+										gbc_lblIconUser.gridx = 2;
+										gbc_lblIconUser.gridy = 2;
+										panel.add(lblIconUser, gbc_lblIconUser);
+								
+										lblUsuario = new JLabel("Usuario:");
+										GridBagConstraints gbc_lblUsuario = new GridBagConstraints();
+										gbc_lblUsuario.fill = GridBagConstraints.VERTICAL;
+										gbc_lblUsuario.anchor = GridBagConstraints.WEST;
+										gbc_lblUsuario.insets = new Insets(0, 0, 5, 5);
+										gbc_lblUsuario.gridx = 3;
+										gbc_lblUsuario.gridy = 2;
+										panel.add(lblUsuario, gbc_lblUsuario);
+								
+										textUsuario = new JTextField();
+										textUsuario.addActionListener(new ActionListener() {
+											public void actionPerformed(ActionEvent e) {
+												// Activamos los campos de la contraseña
+												pwdPasswd.setEnabled(true);
+												pwdPasswd.setEditable(true);
+												lblContraseña.setEnabled(true);
+												// Pasamos el cursos al campo de la contraseña
+												pwdPasswd.requestFocus();
+											}
+										});
+										GridBagConstraints gbc_textUsuario = new GridBagConstraints();
+										gbc_textUsuario.fill = GridBagConstraints.BOTH;
+										gbc_textUsuario.insets = new Insets(0, 0, 5, 5);
+										gbc_textUsuario.gridx = 4;
+										gbc_textUsuario.gridy = 2;
+										panel.add(textUsuario, gbc_textUsuario);
+										textUsuario.setColumns(10);
+						
+								lblIconLock = new JLabel("");
+								lblIconLock.setIcon(new ImageIcon(Login.class.getResource("/presentacion/icon lock (1).png")));
+								GridBagConstraints gbc_lblIconLock = new GridBagConstraints();
+								gbc_lblIconLock.insets = new Insets(0, 0, 5, 5);
+								gbc_lblIconLock.gridx = 2;
+								gbc_lblIconLock.gridy = 4;
+								panel.add(lblIconLock, gbc_lblIconLock);
+				
+						lblContraseña = new JLabel("Contrase\u00F1a:");
+						lblContraseña.setEnabled(false);
+						GridBagConstraints gbc_lblContraseña = new GridBagConstraints();
+						gbc_lblContraseña.anchor = GridBagConstraints.EAST;
+						gbc_lblContraseña.insets = new Insets(0, 0, 5, 5);
+						gbc_lblContraseña.gridx = 3;
+						gbc_lblContraseña.gridy = 4;
+						panel.add(lblContraseña, gbc_lblContraseña);
+				GridBagConstraints gbc_pwdPasswd = new GridBagConstraints();
+				gbc_pwdPasswd.insets = new Insets(0, 0, 5, 5);
+				gbc_pwdPasswd.fill = GridBagConstraints.HORIZONTAL;
+				gbc_pwdPasswd.gridx = 4;
+				gbc_pwdPasswd.gridy = 4;
+				panel.add(pwdPasswd, gbc_pwdPasswd);
 
 		lblAviso = new JLabel("");
-		lblAviso.setEnabled(false);
 		lblAviso.setOpaque(true);
 		GridBagConstraints gbc_lblAviso = new GridBagConstraints();
 		gbc_lblAviso.gridwidth = 2;
 		gbc_lblAviso.insets = new Insets(0, 0, 5, 5);
-		gbc_lblAviso.gridx = 2;
-		gbc_lblAviso.gridy = 5;
+		gbc_lblAviso.gridx = 3;
+		gbc_lblAviso.gridy = 6;
 		panel.add(lblAviso, gbc_lblAviso);
-
-		chckbxRecuerdame = new JCheckBox("Recuerdame");
-		GridBagConstraints gbc_chckbxRecuerdame = new GridBagConstraints();
-		gbc_chckbxRecuerdame.insets = new Insets(0, 0, 5, 5);
-		gbc_chckbxRecuerdame.gridx = 5;
-		gbc_chckbxRecuerdame.gridy = 4;
-		panel.add(chckbxRecuerdame, gbc_chckbxRecuerdame);
-
-		btnEntrar = new JButton("ENTRAR");
-		// btnEntrar.addKeyListener(new BtnEntrarKeyListener());
-		btnEntrar.addActionListener(new BtnEntrarActionListener());
-		btnEntrar.setEnabled(false);
-		GridBagConstraints gbc_btnEntrar = new GridBagConstraints();
-		gbc_btnEntrar.insets = new Insets(0, 0, 5, 5);
-		gbc_btnEntrar.gridx = 5;
-		gbc_btnEntrar.gridy = 5;
-		panel.add(btnEntrar, gbc_btnEntrar);
+		
+				btnEntrar = new JButton("ENTRAR");
+				btnEntrar.addKeyListener(new BtnEntrarKeyListener());
+				btnEntrar.addActionListener(new BtnEntrarActionListener());
+				btnEntrar.setEnabled(false);
+				GridBagConstraints gbc_btnEntrar = new GridBagConstraints();
+				gbc_btnEntrar.insets = new Insets(0, 0, 5, 5);
+				gbc_btnEntrar.gridx = 6;
+				gbc_btnEntrar.gridy = 6;
+				panel.add(btnEntrar, gbc_btnEntrar);
 
 		menuBar = new JMenuBar();
 		menuBar.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
@@ -219,7 +238,7 @@ public class Login {
 		mntmInstrucciones.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JOptionPane.showMessageDialog(null,
-						"Introduzca el nombre del usuario y la contraseña.\nSi desea que se recuerde su usuario marque la casilla recuerdame.\nA continuación, pulse el botón para entrar en la aplicación.");
+						"Introduzca un nombre de usuario y una contraseña.\n\n Usuario: Maria Espinosa, contraseña: mea1998\n Usuario: Andres Gutierrez, contraseña: agc1995\n\nA continuación, pulse el botón o la tecla ENTER para entrar en la aplicación.");
 			}
 		});
 		mnAyuda.add(mntmInstrucciones);
@@ -287,7 +306,6 @@ public class Login {
 			pwdPasswd.setFont(new Font(null, Font.PLAIN, 16));
 			lblAviso.setFont(new Font(null, Font.PLAIN, 16));
 			btnEntrar.setFont(new Font(null, Font.PLAIN, 16));
-			chckbxRecuerdame.setFont(new Font(null, Font.PLAIN, 16));
 		}
 	}
 
@@ -299,7 +317,6 @@ public class Login {
 			pwdPasswd.setFont(new Font(null, Font.PLAIN, 12));
 			lblAviso.setFont(new Font(null, Font.PLAIN, 12));
 			btnEntrar.setFont(new Font(null, Font.PLAIN, 12));
-			chckbxRecuerdame.setFont(new Font(null, Font.PLAIN, 12));
 		}
 	}
 
@@ -311,7 +328,6 @@ public class Login {
 			pwdPasswd.setFont(new Font(null, Font.PLAIN, 10));
 			lblAviso.setFont(new Font(null, Font.PLAIN, 10));
 			btnEntrar.setFont(new Font(null, Font.PLAIN, 10));
-			chckbxRecuerdame.setFont(new Font(null, Font.PLAIN, 10));
 		}
 	}
 
@@ -323,7 +339,6 @@ public class Login {
 			pwdPasswd.setFont(new Font("Times New Roman", Font.PLAIN, pwdPasswd.getFont().getSize()));
 			lblAviso.setFont(new Font("Times New Roman", Font.PLAIN, lblAviso.getFont().getSize()));
 			btnEntrar.setFont(new Font("Times New Roman", Font.PLAIN, btnEntrar.getFont().getSize()));
-			chckbxRecuerdame.setFont(new Font("Times New Roman", Font.PLAIN, chckbxRecuerdame.getFont().getSize()));
 		}
 	}
 
@@ -335,13 +350,12 @@ public class Login {
 			pwdPasswd.setFont(new Font("Arial", Font.PLAIN, pwdPasswd.getFont().getSize()));
 			lblAviso.setFont(new Font("Arial", Font.PLAIN, lblAviso.getFont().getSize()));
 			btnEntrar.setFont(new Font("Arial", Font.PLAIN, btnEntrar.getFont().getSize()));
-			chckbxRecuerdame.setFont(new Font("Arial", Font.PLAIN, chckbxRecuerdame.getFont().getSize()));
 		}
 	}
 
 	private class BtnEntrarActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			VentanaPrincipal ventanaPrincipal = new VentanaPrincipal(); // Mostrar el usuario con su nombre, su conexion y su foto
+			VentanaPrincipal ventanaPrincipal = new VentanaPrincipal(); 
 			ventanaPrincipal.setPersonal(listaUsuarios.get(usuario).getUsuario());
 			ventanaPrincipal.setConexion(listaUsuarios.get(usuario).getConexion());
 			ventanaPrincipal.setFoto(listaUsuarios.get(usuario).getFoto());
@@ -350,7 +364,6 @@ public class Login {
 			textUsuario.setText("");
 			pwdPasswd.setText("");
 			lblAviso.setText("");
-			chckbxRecuerdame.setEnabled(false);
 			btnEntrar.setEnabled(true);
 		}
 
@@ -359,9 +372,11 @@ public class Login {
 	private class BtnEntrarKeyListener extends KeyAdapter {
 		@Override
 		public void keyPressed(KeyEvent arg0) {
-			if (arg0.getKeyCode() == KeyEvent.VK_ENTER)
+			if (arg0.getKeyCode() == KeyEvent.VK_ENTER) {
 				btnEntrar.doClick();
+			}
 		}
+		
 	}
 
 	private class PwdPasswdActionListener implements ActionListener {
@@ -403,5 +418,4 @@ public class Login {
 		return frmLogin;
 
 	}
-
 }
