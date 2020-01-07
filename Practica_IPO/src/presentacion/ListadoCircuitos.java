@@ -28,6 +28,7 @@ import dominio.Circuito;
 import dominio.CircuitoAmp;
 import dominio.CircuitosList;
 import dominio.Guias;
+import dominio.ProximosCircuitos;
 
 import java.awt.Color;
 import javax.swing.SwingConstants;
@@ -40,6 +41,7 @@ public class ListadoCircuitos extends JPanel {
 	private URL foto;
 	private JTextField textBusquedaCiudad;
 	private static ArrayList<CircuitosList> listaCircuitosList = CircuitosList.generarCircuito();
+	private static ArrayList<ProximosCircuitos> listaProximosCircuitosList = ProximosCircuitos.generarProximosCircuitos();
 	private JList listCiudades;
 	private JTextField textIncidencias;
 	private JTextField textPrecio;
@@ -49,6 +51,7 @@ public class ListadoCircuitos extends JPanel {
 	private JButton btnGuardar;
 	private JTextField textCiudad;
 	private JTextPane textOpiniones;
+	private JList listCircuitos;
 
 	/**
 	 * Create the panel.
@@ -260,7 +263,7 @@ public class ListadoCircuitos extends JPanel {
 		gbc_textOpiniones.gridy = 4;
 		panel.add(textOpiniones, gbc_textOpiniones);
 		
-		JList listCircuitos = new JList();
+		listCircuitos = new JList();
 		listCircuitos.setBorder(new TitledBorder(null, Messages.getString("ListadoCircuitos.14"), TitledBorder.LEADING, TitledBorder.TOP, null, null)); //$NON-NLS-1$
 		GridBagConstraints gbc_listCircuitos = new GridBagConstraints();
 		gbc_listCircuitos.gridheight = 3;
@@ -294,7 +297,7 @@ public class ListadoCircuitos extends JPanel {
 		add(btnGuardar, gbc_btnGuardar);
 
 		crearLista();
-		
+		crearListaProximos();
 		
 		
 	}
@@ -305,6 +308,14 @@ public class ListadoCircuitos extends JPanel {
 			modelo.addElement(listaCircuitosList.get(i).getCiudad());
 		}
 		listCiudades.setModel(modelo);
+	}
+	
+	void crearListaProximos() {
+		DefaultListModel modelo = new DefaultListModel();
+		for (int i = 0; i <= listaProximosCircuitosList.size() - 1; i++) {
+			modelo.addElement(listaProximosCircuitosList.get(i).getCiudad()+"    "+listaProximosCircuitosList.get(i).getFecha());
+		}
+		listCircuitos.setModel(modelo);
 	}
 	
 	private class ListListSelectionListener implements ListSelectionListener {
